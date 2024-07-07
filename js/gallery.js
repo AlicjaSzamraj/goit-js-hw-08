@@ -82,3 +82,14 @@ images.forEach((image) => {
   li.appendChild(a); // Dodajemy a do li
   gallery.appendChild(li); // Dodajemy li do ul.gallery
 });
+
+const instance = basicLightbox.create(`
+  <div class="modal">
+      <p>
+          Your first lightbox with just a few lines of code.
+          Yes, it's really that simple.
+      </p>
+  </div>
+`);
+
+instance.show();
