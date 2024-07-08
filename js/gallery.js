@@ -64,6 +64,7 @@ const images = [
   },
 ];
 const gallery = document.querySelector(".gallery"); // Wybieramy ul.gallery
+const fragment = document.createDocumentFragment();
 
 images.forEach((image) => {
   const li = document.createElement("li"); // Tworzymy nowy element li
@@ -80,8 +81,9 @@ images.forEach((image) => {
 
   a.appendChild(img); // Dodajemy img do a
   li.appendChild(a); // Dodajemy a do li
-  gallery.appendChild(li); // Dodajemy li do ul.gallery
+  fragment.appendChild(li); // Dodajemy li do fragment
 });
+gallery.appendChild(fragment); // dodajemy całą liste do DOM- taki sposob zwieksza szybkosc, obniza obciążenie
 
 document.querySelector("ul.gallery").addEventListener("click", selectImages);
 
