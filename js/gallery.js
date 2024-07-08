@@ -78,6 +78,7 @@ images.forEach((image) => {
   img.classList.add("gallery-image"); // Dodajemy klasę 'gallery-image'
   img.src = image.preview; // Ustawiamy atrybut src na miniaturkę obrazu
   img.alt = image.description; // Ustawiamy atrybut alt na opis obrazu
+  img.dataset = image.original;
 
   a.appendChild(img); // Dodajemy img do a
   li.appendChild(a); // Dodajemy a do li
@@ -85,16 +86,16 @@ images.forEach((image) => {
 });
 gallery.appendChild(fragment); // dodajemy całą liste do DOM- taki sposob zwieksza szybkosc, obniza obciążenie
 
-document.querySelector("ul.gallery").addEventListener("click", selectImages);
-
+gallery.addEventListener("click", selectImages);
 function selectImages(event) {
-  console.log(event.target.getAttribute("data-original"));
+  event.preventDefault();
+  console.log(event.target.getAttribute("image.original"));
 }
 
-const instance = basicLightbox.create(`
-  <div class="modal">
-     
-  </div>
-`);
+const instance = basicLightbox.create(`<img src="" width="1280">`, {
+  onShow: (instance) => {
+    instance.element().querySelector("a").onclick = instance.close;
+  },
+});
 
 instance.show();
