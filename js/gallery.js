@@ -83,12 +83,15 @@ images.forEach((image) => {
   gallery.appendChild(li); // Dodajemy li do ul.gallery
 });
 
+document.querySelector("ul.gallery").addEventListener("click", selectImages);
+
+function selectImages(event) {
+  console.log(event.target.getAttribute("data-original"));
+}
+
 const instance = basicLightbox.create(`
   <div class="modal">
-      <p>
-          Your first lightbox with just a few lines of code.
-          Yes, it's really that simple.
-      </p>
+     
   </div>
 `);
 
