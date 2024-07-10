@@ -78,7 +78,7 @@ images.forEach((image) => {
   img.classList.add("gallery-image"); // Dodajemy klasę 'gallery-image'
   img.src = image.preview; // Ustawiamy atrybut src na miniaturkę obrazu
   img.alt = image.description; // Ustawiamy atrybut alt na opis obrazu
-  img.dataset = image.original;
+  img.dataset.source = image.original;
 
   a.appendChild(img); // Dodajemy img do a
   li.appendChild(a); // Dodajemy a do li
@@ -89,7 +89,8 @@ gallery.appendChild(fragment); // dodajemy całą liste do DOM- taki sposob zwie
 gallery.addEventListener("click", selectImages);
 function selectImages(event) {
   event.preventDefault();
-  console.log(event.target.getAttribute("image.original"));
+
+  console.log(event.target.dataset.source);
 }
 
 const instance = basicLightbox.create(`<img src="" width="1280">`, {
