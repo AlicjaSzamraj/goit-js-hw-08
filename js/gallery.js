@@ -103,7 +103,7 @@ function selectImages(event) {
 
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
-      gallery.onclick = instance.close();
+      instance.close();
     }
   });
 }
