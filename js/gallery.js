@@ -86,17 +86,15 @@ images.forEach((image) => {
 });
 gallery.appendChild(fragment); // dodajemy całą liste do DOM- taki sposob zwieksza szybkosc, obniza obciążenie
 
-gallery.addEventListener("click", selectImages);
 function selectImages(event) {
   event.preventDefault();
+  const dataSource = event.target.dataset.source;
 
-  console.log(event.target.dataset.source);
+  if (!dataSource) return;
+
+  const instance = basicLightbox.create(`
+    <img src="${dataSource}"">
+    `);
+  instance.element().querySelector("img").src = dataSource;
+  instance.show();
 }
-
-const instance = basicLightbox.create(`<img src="" width="1280">`, {
-  onShow: (instance) => {
-    instance.element().querySelector("a").onclick = instance.close;
-  },
-});
-
-instance.show();
