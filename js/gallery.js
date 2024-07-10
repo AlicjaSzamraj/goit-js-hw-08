@@ -94,8 +94,16 @@ function selectImages(event) {
   if (!dataSource) return;
 
   const instance = basicLightbox.create(`
-    <img src="${dataSource}"">
+    <img src="${dataSource}" width=1280 >
     `);
   instance.element().querySelector("img").src = dataSource;
   instance.show();
+
+  const modal = document.querySelector(".modal");
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      gallery.onclick = instance.close();
+    }
+  });
 }
